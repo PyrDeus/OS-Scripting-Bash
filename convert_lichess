@@ -1,0 +1,26 @@
+#!/bin/bash
+
+[ "$#" -ne "1" ] && echo "Bad number of args" >&2 && exit 1
+
+pgn_file="$1"
+tmp_file="/tmp/.lichess_converter"
+
+[ ! -e "${pgn_file}" ] && echo "${pgn_file} does not exist" && exit 1
+
+[ -e "${tmp_file} " ] && echo "${tmp_file} already exists, rename or remove it and proceed again" && exit 1
+
+while read line; do
+    if echo "${line}" | grep '\[UTCDate' > /dev/null; then # if the line is the UTCDate key
+        echo "${line/UTCDate/Date}"
+        echo "${line/UTCDate/EventDate}"
+        echo '[Round "1"]'
+    else
+        echo "${line}"
+    fi
+done < "${pgn_file}" > "${tmp_file}"
+
+rm "${pgn_file}"
+mv "${tmp_file}" "${pgn_file}"
+
+exit 0
+

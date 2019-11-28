@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# Sacha Verheeke 000459786
+
+
+[ "$#" -lt "4" ] && echo "Not enough args" >&2 && exit 1
+
+# realpath -> fonction pour rendre un chemin relatif en absolu
+
+# source cible poubelle conflit
+
+source=$1
+cible=$2
+poubelle=$3
+conflit=$4
+
+
+
+if [ ! -d "${source}" ]; then
+    echo "Not valid SOURCE repository" && exit 1
+fi
+if [ ! -d "${cible}" ]; then
+    echo "Not valid CIBLE repository" && exit 1
+fi
+if [ ! -d "${poubelle}" ]; then
+    echo "Not valid POUBELLE repository" && exit 1
+fi
+if [ ! -d "${conflit}" ]; then
+    echo "Not valid CONFLIT repository" && exit 1
+fi
+
+
+ls "${cible}"
+
+#while "${flag}"; then
+    
+    
+    
+#done
+
+#ls "${cible}" 
+
+
+
+
+#grep -p "substring" <<< "string"
+# -> voir TP.1
+#cut -d
+
+# pwd
+: '
+FORMAT PGN :
+
+[Event "F/S Return Match"]
+[Site "Belgrade, Serbia JUG"]
+[Date "1992.11.04"]
+[Round "29"]
+[White "Fischer, Robert J."]
+[Black "Spassky, Boris V."]
+[Result "1/2-1/2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 ....
+'
+
+# couleur-du-joueur_nom-adversaire_date_round_result.pgn
+: '
+Black : le nom/pseudo du joueur avec les noirs,
+BlackElo : le classement Elo du joueur avec les noirs,
+Date : la date de la partie,
+Event : le nom de l’évènement/tournoi,
+EventDate : les dates du tournoi dans le cadre duquel la partie est jouée,
+Result : le résultat de la partie,
+Round : le numéro de la partie dans la manche,
+Site : le lieu de la partie,
+White : le nom/pseudo du joueur avec les blancs,
+WhiteElo : le classement Elo du joueur avec les blancs.
+'
+
+: '
+input="/path/to/txt/file"
+while IFS= read -r line
+do
+  echo "$line"
+done < "$input"
+'
+
+
